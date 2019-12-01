@@ -7,10 +7,8 @@
   v10.15.3
   $ npm -v
   6.4.1
-  nodemailer 0.7.1
+  exceljs 0.7.1
 ```
-
----
 
 # usage
 ## 1. create the workbook

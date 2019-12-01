@@ -10,8 +10,6 @@
   nodemailer 6.3.0
 ```
 
----
-
 # usage
 ## 1. createTransport
 ```
