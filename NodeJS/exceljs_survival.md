@@ -81,16 +81,17 @@ const media = workbook.model.media;        // 获取workbook中所有的media信
 const media_inWorksheet = workbook.model.worksheets[0].media;      // 获取某个worksheet中所有的media信息，注意此处worksheet的index从0开始
 ```
 `media`和`media_inWorksheet`均为数组类型
+
 `media`的结构（仅列出关键字段）：
 ```javascript
-{
+[{
     "index": 1,     // index可以作为image的id
     "buffer": "xxx"       // TODO 说明一下buffer的格式
-}
+}]
 ```
 `media_inWorksheet`的结构（仅列出关键字段）：
 ```javascript
-{
+[{
     "imageId": 1,       // 可以去对应media数组中的index，以此获取image的buffer
     "range": {
         "tl": {     // top left。本人比较倾向使用image的左上角进行判断所处单元格的位置
@@ -98,7 +99,7 @@ const media_inWorksheet = workbook.model.worksheets[0].media;      // 获取某�
             "nativeRow": 1      // 所在行
         }
     }
-}
+}]
 ```
 至此我们便可以获取到image的buffer了
 
