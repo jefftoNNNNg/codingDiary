@@ -62,21 +62,20 @@ workbook.xlsx.writeBuffer().then(function (buffer) {
 一般应用在数据导入，或读取报表的模版并完善数据后再进行输出
 
 ## 1. 读取一个excel
-通常我们使用`<input type="file" />`进行文件上传（本地路径问题可结合busboy，本人另一篇文章有简短介绍，请自行查阅）。在获取到文件的buffer后：
-```javascript
-const workbook = new Excel.Workbook();
-```
-
-## 2. 从excel中取图片
-通常当我们导入excel文件时，需要读取excel中的图片并保存数据，本例同时介绍了，读取图片时获取其所在的单元格的位置，以此判断其应该对应的行数据
+通常我们使用`<input type="file" />`进行文件上传（本地路径问题可结合busboy，本人另一篇文章有简短介绍，请自行查阅）。在获取到文件的buffer后创建`workbook`：
 ```javascript
 const Excel = require('exceljs');
+
 const buffers = [];
 const buffer = Buffer.concat(buffers);       // TODO 说明一下buffer的格式
 
 const workbook = new Excel.Workbook();
 await workbook.xlsx.load(buffer);
+```
 
+## 2. 从excel中取图片
+通常当我们导入excel文件时，需要读取excel中的图片并保存数据，本例同时介绍了，读取图片时获取其所在的单元格的位置，以此判断其应该对应的行数据
+```javascript
 // 此时有两个关键的值要从workbook中获取
 const media = workbook.model.media;        // 获取workbook中所有的media信息，包含了所有的sheet页
 const media_inWorksheet = workbook.model.worksheets[0].media;      // 获取某个worksheet中所有的media信息，注意此处worksheet的index从0开始
