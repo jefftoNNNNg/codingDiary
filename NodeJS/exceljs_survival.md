@@ -34,7 +34,7 @@ worksheet.getCell('A1').border = {top: {style: 'thin'}, left: {style: 'thin'}, b
 const test = worksheet.getCell('A1').value;     // 从单元格取值
 ```
 
-### 插入图片图片
+### 插入图片
 ```javascript
 const image = {
     buffer: fs.readFileSync('../public/images/Oval.png'),
@@ -58,14 +58,16 @@ workbook.xlsx.writeBuffer().then(function (buffer) {
 });
 ```
 
-# 读取一个excel文件，一般应用在数据导入，或读取报表的模版并完善数据后再进行输出
+# 读取一个excel文件
+一般应用在数据导入，或读取报表的模版并完善数据后再进行输出
+
 ## 1. 读取一个excel
 通常我们使用`<input type="file" />`进行文件上传（本地路径问题可结合busboy，本人另一篇文章有简短介绍，请自行查阅）。在获取到文件的buffer后：
 ```javascript
 const workbook = new Excel.Workbook();
 ```
 
-## 1. 从excel中取图片
+## 2. 从excel中取图片
 通常当我们导入excel文件时，需要读取excel中的图片并保存数据，本例同时介绍了，读取图片时获取其所在的单元格的位置，以此判断其应该对应的行数据
 ```javascript
 const Excel = require('exceljs');
@@ -81,14 +83,14 @@ const media_inWorksheet = workbook.model.worksheets[0].media;      // 获取某�
 ```
 `media`和`media_inWorksheet`均为数组类型
 `media`的结构（仅列出关键字段）：
-```json
+```javascript
 {
     "index": 1,     // index可以作为image的id
     "buffer": "xxx"       // TODO 说明一下buffer的格式
 }
 ```
 `media_inWorksheet`的结构（仅列出关键字段）：
-```json
+```javascript
 {
     "imageId": 1,       // 可以去对应media数组中的index，以此获取image的buffer
     "range": {
@@ -101,7 +103,7 @@ const media_inWorksheet = workbook.model.worksheets[0].media;      // 获取某�
 ```
 至此我们便可以获取到image的buffer了
 
-## 2. 保存图片
+## 3. 保存图片
 至此，我们需要将上一步获取的buffer转换为nodejs的readstream以便进行保存
 ```javascript
 const stream = require('stream');
