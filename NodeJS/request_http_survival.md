@@ -2,7 +2,7 @@
 本文介绍了request的入门使用方法，主要是form data post和raw post
 
 >请注意：
-As of Feb 11th 2020, request is fully deprecated. No new changes are expected to land. In fact, none have landed for some time. For more information about why request is deprecated and possible alternatives refer to this [issue]().
+As of Feb 11th 2020, request is fully deprecated. No new changes are expected to land. In fact, none have landed for some time. For more information about why request is deprecated and possible alternatives refer to this [issue](https://github.com/request/request/issues/3142).
 
 # 资源
 >[github](https://github.com/request/request)
