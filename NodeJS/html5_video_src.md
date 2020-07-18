@@ -11,16 +11,16 @@ TODO 文件下载的断点续传
 /*
     计算 range, start, end
 */
-var range = req.headers.range;
+const range = req.headers.range;
 if (!range) {
     // 416 Wrong range
     return res.sendStatus(416);
 }
-var positions = range.replace(/bytes=/, "").split("-");
-var start = parseInt(positions[0], 10);
-var total = doc.length;
-var end = positions[1] ? parseInt(positions[1], 10) : total - 1;
-var chunksize = (end - start) + 1;
+const positions = range.replace(/bytes=/, "").split("-")
+    ,start = parseInt(positions[0], 10)
+    ,total = 12345678     // 视频的总字节数
+    ,end = positions[1] ? parseInt(positions[1], 10) : total - 1
+    ,chunksize = (end - start) + 1;
 
 res.writeHead(206, {
     "Content-Range": "bytes " + start + "-" + end + "/" + total,
@@ -43,5 +43,4 @@ let readstream = gfs.createReadStream({
 });
 
 readstream.pipe(res);
-
 ```
