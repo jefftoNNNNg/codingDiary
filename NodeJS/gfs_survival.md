@@ -1,5 +1,5 @@
 # gridfs-stream
-使用gfs向mongodb保存文件
+使用gfs向mongodb保存、提取文件
 
 # 资源
 >[gridfs-stream](https://github.com/aheckmann/gridfs-stream)
