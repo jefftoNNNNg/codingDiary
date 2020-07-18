@@ -1,7 +1,10 @@
-# source
+# nodemailer入门
+本文介绍了使用nodemailer发送邮件
+
+# 资源
 >[github](https://github.com/nodemailer/nodemailer)
 
-# versions
+# 版本
 ```
   $ node -v
   v10.15.3
@@ -10,12 +13,12 @@
   nodemailer 6.3.0
 ```
 
-# usage
+# 使用
 ## 1. createTransport
-```
+```javascript
 {
-    host: 'smtp.exmail.qq.com',
     // host: 'smtp.qq.com',
+    host: 'smtp.exmail.qq.com',
     // port: 465,       // for qq mail
     port: 587,      // for exmail
     secure: false,       // qq mail(true), exmail(false)
@@ -26,14 +29,14 @@
     },
     auth: {
         user: 'test@companydomain.com',     // or 12345678@qq.com
-        pass: 'auth code. not password'
+        pass: 'notice:: auth code. not password!'
     },
     logger: true
 }
 ```
 
 ## 2. message
-```
+```javascript
 let message = {
     to: 'customer <send2@domain.com>',
     subject: 'hello world',
@@ -51,4 +54,16 @@ let message = {
         cid: timestamp        // unique as possible
     }]
 };
+```
+
+## 3. send
+```javascript
+transporter.sendMail(message, function (err, info) {
+    console.log('Message sent successfully!');
+    console.log(nodemailer.getTestMessageUrl(info));
+
+    transporter.close();
+    
+    // other services...
+});
 ```
