@@ -19,17 +19,17 @@ For more information about why request is deprecated and possible alternatives r
 ```
 
 # http post 使用form data形式
+## client
 ```javascript
-// client
 request.post({url: 'full url', form: body}, function (err, res, body) {});
-
-// server
-// TODO 使用xxx方式接收参数，好久不用form data了，待验证一下
 ```
 
+## server
+TODO 使用xxx方式接收参数，好久不用form data了，待验证一下
+
 # http post 使用raw形式
+## client
 ```javascript
-// client
 const option = {
     method: 'post',
     url: 'full url',
@@ -38,7 +38,7 @@ const option = {
     json: true
 };
 request.post(option, function (err, res, body) {});
-
-// server
-使用`req.body.xxx`接收参数
 ```
+
+## server
+使用`req.body.xxx`接收参数
